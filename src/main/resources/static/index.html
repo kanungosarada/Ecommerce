@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeTech | Premium Electronics</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="glass-nav">
+        <div class="logo">
+            <i class="fa-solid fa-cube"></i>e-Store
+        </div>
+        <div class="nav-links">
+            <a href="#" id="nav-home" class="active">Home</a>
+            <a href="#" id="nav-products">Products</a>
+        </div>
+        <div class="nav-actions">
+            <button id="cart-btn" class="icon-btn">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+            </button>
+            <button id="login-btn" class="primary-btn">Login</button>
+            <button id="admin-btn" class="secondary-btn hidden"><i class="fa-solid fa-lock"></i> Add</button>
+            <button id="logout-btn" class="secondary-btn hidden">Logout</button>
+            <span id="user-greeting" class="hidden"></span>
+        </div>
+    </nav>
+
+    <!-- ... existing hero and products ... -->
+
+    <!-- Admin Product Modal -->
+    <div id="admin-modal" class="modal">
+        <div class="modal-content glass-card auth-card">
+            <div class="modal-header">
+                <h3 id="admin-modal-title">Add Product</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="product-form">
+                <input type="hidden" id="prod-id">
+                <div class="input-group">
+                    <i class="fa-solid fa-tag"></i>
+                    <input type="text" id="prod-name" placeholder="Product Name" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <input type="number" id="prod-price" placeholder="Price" step="0.01" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <input type="number" id="prod-stock" placeholder="Stock Quantity" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-align-left"></i>
+                    <input type="text" id="prod-desc" placeholder="Description" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-image"></i>
+                    <input type="text" id="prod-image-url" placeholder="Image URL">
+                </div>
+                <button type="submit" class="cta-btn">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1>Experience the <span class="gradient-text">Future</span></h1>
+            <p>Premium electronics curated for the modern professional. Elevate your workspace today.</p>
+            <button id="shop-now-btn" class="cta-btn">Shop Collection</button>
+        </div>
+    </header>
+
+    <!-- Product Grid -->
+    <section id="products" class="container">
+        <h2 class="section-title">Latest Arrivals</h2>
+        <div id="product-grid" class="grid">
+            <!-- Products will be injected here via JS -->
+            <div class="loading-spinner"><i class="fa-solid fa-circle-notch fa-spin"></i> Loading...</div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h3>Your Cart</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div id="cart-items" class="cart-items">
+                <!-- Cart items here -->
+                <p class="empty-msg">Your cart is empty.</p>
+            </div>
+            <div class="modal-footer">
+                <div class="cart-total">Total: $<span id="cart-total-amount">0.00</span></div>
+                <button id="checkout-btn" class="cta-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content glass-card auth-card">
+            <button class="close-btn">&times;</button>
+
+            <!-- Login Form -->
+            <form id="login-form">
+                <h2>Welcome Back</h2>
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="login-username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="cta-btn">Login</button>
+                <p class="switch-auth">New here? <a href="#" id="switch-to-register">Create account</a></p>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="hidden">
+                <h2>Create Account</h2>
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="reg-username" placeholder="Username (min 3 chars)" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="reg-password" placeholder="Password (min 6 chars)" required>
+                </div>
+                <button type="submit" class="cta-btn">Register</button>
+                <p class="switch-auth">Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden">Item added to cart</div>
+
+    <script src="app.js?v=4"></script>
+</body>
+
+</html>
