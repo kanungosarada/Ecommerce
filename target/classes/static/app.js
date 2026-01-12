@@ -213,8 +213,7 @@ function updateUIAuth() {
 
 async function checkAuth() {
     if (token) {
-        // In a real app, we'd validate the token with an endpoint like /api/auth/me
-        // For now, we'll decode it or just assume valid if exists (User session persistence)
+        
         currentUser = parseJwt(token);
         updateUIAuth();
         fetchCart();
@@ -324,7 +323,7 @@ async function handleLogin(e) {
             console.log('[handleLogin] Calling updateUIAuth...');
             updateUIAuth();
             console.log('[handleLogin] Calling loadProducts...');
-            loadProducts(); // Refresh products to show edit buttons for admins
+            loadProducts(); 
             closeModal(authModal);
             fetchCart();
             showToast(`Welcome, ${data.username}!`);
